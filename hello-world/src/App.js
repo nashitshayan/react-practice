@@ -8,9 +8,16 @@ import ClassClick from './components/ClassClick';
 import EventBind from './components/EventBind';
 import ParentComponent from './components/ParentComponent';
 import NameList from './components/NameList';
+import Stylesheet from './components/Stylesheet';
+import Form from './components/Form';
+import LifecycleA from './components/LifecycleA';
 function App() {
 	return (
 		<div className='App'>
+			<LifecycleA />
+
+			{/* <Stylesheet />
+			<Form /> */}
 			{/* <NameList /> */}
 			{/* <ParentComponent /> */}
 			{/* <EventBind /> */}
