@@ -11,10 +11,12 @@ import NameList from './components/NameList';
 import Stylesheet from './components/Stylesheet';
 import Form from './components/Form';
 import LifecycleA from './components/LifecycleA';
+import Clock from './components/Clock';
 function App() {
 	return (
 		<div className='App'>
-			<LifecycleA />
+			<Clock />
+			{/* <LifecycleA /> */}
 
 			{/* <Stylesheet />
 			<Form /> */}
