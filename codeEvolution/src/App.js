@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-import Greet from './components/Greet';
-import Welcome from './components/Welcome';
-import Counter from './components/Counter';
-import FunctionClick from './components/FunctionClick';
-import ClassClick from './components/ClassClick';
-import EventBind from './components/EventBind';
-import ParentComponent from './components/ParentComponent';
-import NameList from './components/NameList';
-import Stylesheet from './components/Stylesheet';
-import Form from './components/Form';
-import LifecycleA from './components/LifecycleA';
-import Clock from './components/Clock';
-import Products from './components/Products';
-
+// import Greet from './components/Greet';
+// import Welcome from './components/Welcome';
+// import Counter from './components/Counter';
+// import FunctionClick from './components/FunctionClick';
+// import ClassClick from './components/ClassClick';
+// import EventBind from './components/EventBind';
+// import ParentComponent from './components/ParentComponent';
+// import NameList from './components/NameList';
+// import Stylesheet from './components/Stylesheet';
+// import Form from './components/Form';
+// import LifecycleA from './components/LifecycleA';
+// import Clock from './components/Clock';
+// import Products from './components/Products';
+import Tasks from './components/Tasks';
 function App() {
 	return (
 		<div className='App'>
-			<Products />
+			<Tasks />
+			{/* <Products /> */}
 			{/* <Clock /> */}
 			{/* <LifecycleA /> */}
 
