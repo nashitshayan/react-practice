@@ -11,6 +11,7 @@ class Tasks extends Component {
 				id: uniqid(),
 			},
 			tasks: [],
+			numberOfTasks: 0,
 		};
 	}
 	handleTaskInput = (e) => {
@@ -28,12 +29,21 @@ class Tasks extends Component {
 				text: '',
 				id: uniqid(),
 			},
+			numberOfTasks: this.state.numberOfTasks + 1,
 		});
 		e.preventDefault();
 	};
 
+	handleDeleteTask = (id) => {
+		this.setState({
+			tasks: this.state.tasks.filter((task) => task.id !== id),
+		});
+	};
+	// componentDidUpdate() {
+	// 	// console.log(this.state.tasks.filter((task) => task.id !== '"l22rdf9d"'));
+	// }
 	render() {
-		const { task, tasks } = this.state;
+		const { task, tasks, numberOfTasks } = this.state;
 		const box = {
 			border: '1px solid black',
 			backgroundColor: 'beige',
@@ -50,7 +60,11 @@ class Tasks extends Component {
 					/>
 					<button type='submit'>Submit</button>
 				</form>
-				<Overview tasks={tasks} />
+				<Overview
+					tasks={tasks}
+					numberOfTasks={numberOfTasks}
+					deleteTask={this.handleDeleteTask}
+				/>
 			</div>
 		);
 	}
