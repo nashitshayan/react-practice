@@ -12,10 +12,13 @@ import Stylesheet from './components/Stylesheet';
 import Form from './components/Form';
 import LifecycleA from './components/LifecycleA';
 import Clock from './components/Clock';
+import Products from './components/Products';
+
 function App() {
 	return (
 		<div className='App'>
-			<Clock />
+			<Products />
+			{/* <Clock /> */}
 			{/* <LifecycleA /> */}
 
 			{/* <Stylesheet />
