@@ -9,9 +9,10 @@ class Tasks extends Component {
 			task: {
 				text: '',
 				id: uniqid(),
+				// isEditing: false,
 			},
 			tasks: [],
-			numberOfTasks: 0,
+			//numberOfTasks: 0,
 		};
 	}
 	handleTaskInput = (e) => {
@@ -19,6 +20,7 @@ class Tasks extends Component {
 			task: {
 				text: e.target.value,
 				id: this.state.task.id,
+				// isEditing: true,
 			},
 		});
 	};
@@ -29,7 +31,7 @@ class Tasks extends Component {
 				text: '',
 				id: uniqid(),
 			},
-			numberOfTasks: this.state.numberOfTasks + 1,
+			//numberOfTasks: this.state.numberOfTasks + 1,
 		});
 		e.preventDefault();
 	};
@@ -39,11 +41,25 @@ class Tasks extends Component {
 			tasks: this.state.tasks.filter((task) => task.id !== id),
 		});
 	};
+	// handleEditTask = (id, text) => {
+	// 	this.setState({
+	// 		task: {
+	// 			text: text,
+	// 			id: id,
+	// 			isEditing: true,
+	// 		},
+	// 	});
+	// };
+	// handleSaveTask = () => {
+	// 	this.setState({
+	// 		isEditing: false,
+	// 	});
+	// };
 	// componentDidUpdate() {
 	// 	// console.log(this.state.tasks.filter((task) => task.id !== '"l22rdf9d"'));
 	// }
 	render() {
-		const { task, tasks, numberOfTasks } = this.state;
+		const { task, tasks, numberOfTasks, isEditing } = this.state;
 		const box = {
 			border: '1px solid black',
 			backgroundColor: 'beige',
@@ -64,6 +80,10 @@ class Tasks extends Component {
 					tasks={tasks}
 					numberOfTasks={numberOfTasks}
 					deleteTask={this.handleDeleteTask}
+					// isEditing={isEditing}
+					// editTask={this.handleEditTask}
+					// saveTask={this.handleSaveTask}
+					// taskInput={this.handleTaskInput}
 				/>
 			</div>
 		);
