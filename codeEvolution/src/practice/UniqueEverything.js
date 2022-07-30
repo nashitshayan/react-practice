@@ -14,6 +14,13 @@ import React, { useEffect, useRef, useState } from 'react';
  *
  *
  * NOTE: Trying of read 'future' props or state from a function in a 'past' render is 'swimming against the tide'. It's not 'wrong' (sometimes even necessary) but it might look less 'clean' to break out of the paradigm.
+ *
+ * What About Cleanups?
+ * The correct mental model for function components is that React only runs effects AFTER painting the browser.
+ * The PREVIOUS effect gets cleaned up *AFTER* the re-render with new props.
+ *
+ * React re renders UI -> Browser paints, we see the new UI-> React cleans up the effect for previous render -> React runs the effect for current render
+ *
  */
 function UniqueEverything() {
 	const [count, setCount] = useState(0);
