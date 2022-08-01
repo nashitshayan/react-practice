@@ -1,30 +1,49 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 const customStyles = {
 	margin: '18rem auto',
 	fontSize: '3rem',
 };
+const dataFetchReducer = (state, action) => {
+	switch (action.type) {
+		case 'FETCH_INIT':
+			return { ...state, isError: false, isLoading: true };
+		case 'FETCH_SUCCESS':
+			return {
+				...state,
+				isError: false,
+				isLoading: false,
+				data: action.payload,
+			};
+		case 'FETCH_FAILURE':
+			return { ...state, isLoading: false, isError: true };
+		default:
+			throw new Error();
+	}
+};
 const useDataApi = (initUrl, initData) => {
-	const [data, setData] = useState(initData);
 	const [url, setUrl] = useState(initUrl);
-	const [isLoading, setIsLoading] = useState(false);
-	const [isError, setIsError] = useState(false);
+	const [state, dispatch] = useReducer(dataFetchReducer, {
+		isLoading: false,
+		isError: false,
+		data: initData,
+	});
 	useEffect(() => {
 		async function fetchData() {
-			setIsError(false);
-			setIsLoading(true);
+			dispatch({ type: 'FETCH_INIT' });
+
 			try {
 				const res = await fetch(url);
 				const data = await res.json();
-				setData(data);
+				dispatch({ type: 'FETCH_SUCCESS', payload: data });
+
 				console.log('fetch');
 			} catch (err) {
-				setIsError(true);
+				dispatch({ type: 'FETCH_FAILURE' });
 			}
-			setIsLoading(false);
 		}
 		fetchData();
 	}, [url]);
-	return [{ data, isLoading, isError }, setUrl];
+	return [state, setUrl];
 };
 function FetchData() {
 	const [query, setQuery] = useState('redux');
